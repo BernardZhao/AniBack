@@ -33,7 +33,7 @@ def sketches(action, params):
 
 def handler(event, context):
   try:
-    response = routes[event["path"], None](event["httpMethod"], event["queryStringParameters"])
+    response = routes[event["path"]](event["httpMethod"], event["queryStringParameters"])
   except Exception as e:
     return {'statusCode': 500,
             'body': e,
