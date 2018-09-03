@@ -1,6 +1,6 @@
 import json
 import datetime
-from boto3 import dynamodb 
+import boto3
 
 def handler(event, context):
     client = boto3.client('dynamodb')
