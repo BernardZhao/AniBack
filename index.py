@@ -6,7 +6,7 @@ client = boto3.client('dynamodb')
 
 def root(action, params):
   return {
-    "validEndpoints": routes.keys()
+    "validEndpoints": list(routes.keys())
   }
 
 def sketches(action, params):
