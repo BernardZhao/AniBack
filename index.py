@@ -30,7 +30,8 @@ def handler(event, context):
             paginator = client.get_paginator('scan')
             response["items"] = []
             for page in paginator.paginate(TableName='Sketches'):
-              response["items"].append(page)
+              for record in page["Items"]:
+                response["items"].append(record)
 
 
   
