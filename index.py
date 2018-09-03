@@ -34,9 +34,9 @@ def sketches(action, params):
 def handler(event, context):
   try:
     response = routes.get(event["path"], None)(event["httpMethod"], event["queryStringParameters"])
-  except:
+  except Exception as e:
     {'statusCode': 500,
-     'body': None,
+     'body': e,
      'headers': {'Content-Type': 'application/json'}}
   return {'statusCode': 200,
           'body': json.dumps(response),
