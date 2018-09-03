@@ -3,7 +3,16 @@ import datetime
 import boto3
 
 def handler(event, context):
+  requestType = event["httpMethod"]
+  path = event["path"]
+  
+  if path == "/":
+    if requestType == "GET":
+      response = {
+        
+      }
   client = boto3.client('dynamodb')
+
   response = client.get_item(TableName='Sketches', Key={'sketchId':{'S':"bernardPenisSuckByManyMen"}})
   data = {
     'event': event,
