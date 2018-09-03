@@ -4,11 +4,6 @@ import boto3
 
 client = boto3.client('dynamodb')
 
-routes = {
-  "/": root,
-  "/sketches": sketches
-}
-
 def root(action, params):
   return {
     "validEndpoints": routes.keys()
@@ -47,3 +42,7 @@ def handler(event, context):
           'body': json.dumps(response),
           'headers': {'Content-Type': 'application/json'}}
 
+routes = {
+  "/": root,
+  "/sketches": sketches
+}
