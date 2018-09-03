@@ -7,8 +7,8 @@ def handler(event, context):
     response = client.get_item(TableName='Sketches', Key={'topic':{'S':"bernardPenisSuckByManyMen"}})
 
     data = {
+        'event': event,
         'response': str(response),
-        'context': context,
         'timestamp': datetime.datetime.utcnow().isoformat()
     }
     return {'statusCode': 200,
