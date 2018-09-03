@@ -34,6 +34,10 @@ def sketches(action, params):
 def handler(event, context):
   try:
     response = routes[event["path"]](event["httpMethod"], event["queryStringParameters"])
+  except KeyError:
+    return {'statusCode': 404,
+        'body': "Route not found.",
+        'headers': {'Content-Type': 'application/json'}}
   except Exception as e:
     return {'statusCode': 500,
             'body': str(e),
