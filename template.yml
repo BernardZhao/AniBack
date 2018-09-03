@@ -38,3 +38,8 @@ Resources:
           Properties:
             Path: /sketches
             Method: get
+        GetFrame:
+          Type: Api
+          Properties:
+            Path: /frame
+            Method: get
