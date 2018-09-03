@@ -17,13 +17,22 @@ def handler(event, context):
   
     elif path == "/sketches":
         if requestType == "GET":
-          record = client.get_item(TableName='Sketches', Key={'sketchId':{'S':event["queryStringParameters"]["sketchId"]}})
 
-          response = {
-            'description': record['Item']['description']['S'],
-            'sketchId': record['Item']['sketchId']['S'],
-            'title': record['Item']['title']['S'],
-          }
+          if event["queryStringParameters"]:
+            record = client.get_item(TableName='Sketches', Key={'sketchId':{'S':event["queryStringParameters"]["sketchId"]}})
+            response = {
+              'description': record['Item']['description']['S'],
+              'sketchId': record['Item']['sketchId']['S'],
+              'title': record['Item']['title']['S'],
+            }
+
+          else:
+            paginator = client.get_paginator('scan')
+            response["items"] = []
+            for page in paginator.paginate(TableName='Sketches'):
+              response["items"].append(page)
+
+
   
   except:
     pass
