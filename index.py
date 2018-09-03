@@ -35,9 +35,9 @@ def handler(event, context):
   try:
     response = routes.get(event["path"], None)(event["httpMethod"], event["queryStringParameters"])
   except Exception as e:
-    {'statusCode': 500,
-     'body': e,
-     'headers': {'Content-Type': 'application/json'}}
+    return {'statusCode': 500,
+            'body': e,
+            'headers': {'Content-Type': 'application/json'}}
   return {'statusCode': 200,
           'body': json.dumps(response),
           'headers': {'Content-Type': 'application/json'}}
