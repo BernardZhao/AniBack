@@ -38,8 +38,18 @@ Resources:
           Properties:
             Path: /sketches
             Method: get
-        GetFrame:
+        GetFrames:
           Type: Api
           Properties:
-            Path: /frame
+            Path: /frames
+            Method: get
+        GetImagePaths:
+          Type: Api
+          Properties:
+            Path: /imagePaths
+            Method: get
+        GetImage:
+          Type: Api
+          Properties:
+            Path: /image
             Method: get
